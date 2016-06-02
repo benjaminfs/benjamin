@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>      
+    <meta charser="utf-8">
+    <title>Benjamin.com</title>
+    <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"">
+  </head>
+  <body>
+    <style type="text/css">a:link,a:visited{text-decoration:none;  /*超链接无下划线*/}</style>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="jumbotron">
+   <center><a href="{% url 'buluojianshe_list' %}"><h1>LET'S FUN</h1></a></center>
+          </div>
+        </div>
+      </div>
+      <div class="row">	  
+      {% block content %} {% endblock %}
+      </div>
+    </div>
+  </body>
+</html>
