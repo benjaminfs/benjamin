@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 
 class Article(models.Model):
     ARTICLE_ATTRIBUTE_CHOICES = (
-                        ('smallerthan50yuan', u'5以下'),  # 01
-                        ('between51and150', u'6-10之间'),  # 02
+                        ('smallerthan5', u'5以下'),  # 01
+                        ('between6and10', u'6-10之间'),  # 02
                         ('00000011', u'11-20之间'),  # 03
                         ('00000100', u'21-30之间'),  # 04
                         ('00000101', u'31-40之间'),  # 05
