@@ -19,4 +19,6 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^article/', include("article.urls")),
+    url(r'^$', 'article.views.article_list', name='article_list'),
 ]
