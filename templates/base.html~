@@ -11,7 +11,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="jumbotron">
-   <center><h1>LET'S FUN</h1></center>
+   <center><a href="{% url 'buluojianshe_list' %}"><h1>LET'S FUN</h1></a></center>
           </div>
         </div>
       </div>
