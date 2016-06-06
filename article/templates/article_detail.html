@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-sm-12">
+  <ol class="breadcrumb">
+    <li><a href="{% url 'buluojianshe_list' %}">首页</a></li>
+    <li><a href="{% url 'article_list' buluojianshe.id  %}">{{ buluojianshe.name }}</a></li>
+    <li class="active">{{ article.title}}</li>
+  </ol>
+</div>
+<!--以下是文章展示-->
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table table-bordered articleTable">
+    <tr>
+       <td class="article_author">
+         <div><center>作者:{{ article.owner}}</center></div>
+       </td>
+       <td class="article_content">
+         <b><center><h3>{{ article.title }}</h3></center></b>
+         
+         <div><p>{{ article.content|linebreaksbr }}</p></div>
+         <div class="pull-right"><h6>{{ article.create_timestamp|date:"Y-m-d P" }}</h6></div>
+       </td>
+    </tr>
+<!--以下是文章已评论区-->   
+    <!--{% for comment in comments %} 
+    <tr {% if forloop.last %}id="lastComment"{% endif %}>  
+      <td class="commented_author">评论者:{{ comment.owner.username }}</td>
+      <td class="commented_content">
+        {% with comment.to_comment as to_comment %}
+          {% if to_comment %}
+          <blockquote>
+            <b>{{ to_comment.owner.username }}:</b>
+            <br />
+            {{ to_comment.content|linebreaksbr }}
+          <blockquote>
+          {% endif %}
+                
+         
+          <div class="to_reply_comment pull-right">
+            <span>{{ comment.create_timestamp|date:"Y-m-d P" }}</span>
+                &nbsp;
+            <a href="#comment_to_article" class="btn subbtn" data-comment-id="{{ comment.id }}" data-owner="{{ comment.owner.username }}">回复</a>            
+          </div>
+         <div>{{ comment.content|linebreaksbr }}</div> 
+      {% endwith %}
+      </td>
+    </tr>
+    {% endfor %}
+    </table>
+
+    <br />-->
+    <!--以下是评论翻页-->
+    <!--{% include "component/paginator.html" with param_name="comment_page_no" %}-->
+   
+    <!--以下是文章评论-->
+    <!--{% if user.is_authenticated %}
+    <table class="table commentTable" id="comment_to_article">
+      <tr>
+        <td class="comment_author">
+          <br />
+          <center>评论者：{{ user.username }}<center>
+        </td>
+        <td class="comment_content">
+          <textarea class="form-control" id="commentContent" rows="5"></textarea>
+          <br />
+          <button class="btn btn-primary" id="commentBtn">发表评论</button>
+          <br />
+          <br />
+        </td>
+      </tr>
+    </table>
+    {% endif %}-->
+
+  </div>
+</div>
+
+<!--以下是CSS内容-->
+<style type="text/css">
+.articleTable td.article_author {
+  width: 10%;
+}
+.articleTable td.article_content {
+  width: 87%;
+}
+.commentTable td.comment_author {
+  width: 10%;
+}
+.commentTable td.comment_content {
+  width: 87%;
+}
+blockquote {
+  font-size: 13px;
+}
+</style>
+<!--以下是js内容-->
+<script type="text/javascript" src="/static/lib/jquery/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="/static/lib/jquery/jquery.csrf.js"></script>
+<!--<script type="text/javascript">
+$(document).ready(function () {
+  if (window.location.href.indexOf("goLast")  > 0) {
+      window.location.href = window.location.href + "#lastComment";
+    }
+    var article_id = {{ article.id }};
+    var page_cnt = {{ pagination.page_cnt }};
+    var to_comment_id = 0;
+
+  $("#commentBtn").click(function () {
+    var comment = $("#commentContent").val();
+    var param = {"article_id": article_id, "to_comment_id": to_comment_id, "content": comment};
+    $.post("{% url 'create_comment' %}", param, function () {
+      $("#commentContent").val("");
+    to_comment_id = 0;
+      window.location.href = "{% url 'article_detail' article.id %}?comment_page_no=" + (page_cnt + 1) + "&goLast=1";
+    });
+  })
+  $(".subbtn").click(function (e) {
+    var btn = $(e.target);
+    to_comment_id = parseInt(btn.attr("data-comment-id"));
+    $("#commentContent").attr("placeholder", "回复:" + btn.attr("data-owner"));
+    $("#commentContent").focus();
+    return false;
+  })
+});
+</script>-->
+{% endblock %}

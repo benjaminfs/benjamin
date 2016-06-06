@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-sm-12">
+  <ol class="breadcrumb">
+    <li><a href="{% url 'buluojianshe_list' %}">首页</a></li>
+    <li><a href="{% url 'article_list' buluojianshe.id %}">{{ buluojianshe.name }}</a></li>
+    <li class="active">发表文章</li>
+  </ol>
+
+  <table class="table table-bordered">
+    <div class="panel panel-info">
+        <form method="POST" action="">{% csrf_token %}
+          <input type="text" class="form-control" placeholder="请输入文章标题" name="title" />
+          <div class="panel-body"><textarea name="content" class="form-control" placeholder="请输入文章内容"></textarea></div>
+          <button type="submit" class="pull-right">发表</button>
+        </form>
+    </div>
+{% if messages %}
+  {% for message in messages %}
+    <div class="alter alter-info">{{ message }}</div>
+  {% endfor%}
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+  <link rel = "stylesheet" href = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">    
+  <meta charset = "utf-8">
+  <title>benjamin的部落</title>
+  </head>
+  <body>
+  <thead>
+    <div class="container">
+      <div class="panel panel-default">
+      <div class="panel-heading"><center><h1>Benjamin的部落</h1></center></div>
+    </div>
+  </thead>
+  <tbody>
+       <div class="container">
+       <table class="table table-hover">
+       {% for buluojianshe in benjamins %}
+       <div class = "buluojiansheItem">
+          <tr>
+            <th><center>{{buluojianshe.name}}</center></th>
+            <th><center>{{buluojianshe.desc}}</center></th>
+            <th><center>{{buluojianshe.manager.username}}</center></th>
+          </tr>
+
+
+  
+
+        </div>
+        {% endfor %}
+        </table>
+       </div>
+   <tbody>
+  </body>
+</html>
