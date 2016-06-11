@@ -1,15 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="row">
+  <div class="clo-md-12">
+    <h2>攻略精选</h2>
+  </div>
+</div>
+{% for article in articles%}
+  <div class="col-md-4">
+    <table class="table table-hover">
+        <!--<img src="" alt="sample_image" class="img-responsive img-round">-->
+      <td>{{article.abstract}}</td>
+    </table>
+  </div>
 
 
-<div class="col-sm-12">
-  <p><a class="btn btn-primary btn-sm" href="{% url 'article_create' article.id %}" role="button">发表文章</a></p>
-  <ol class="breadcrumb">
-    <li><a href="{% url 'article_list' %}">首页</a></li>
-    <li class="active">nihao</li>
-  </ol>
-
-  <table class="table table-bordered">
+{% endfor %}
+  <!--<table class="table table-bordered">
     <tr>
       <th>状态</th>
       <th>标题</th>
@@ -19,44 +25,12 @@
     {% for article in articles %}
     <tr>
     <td>{{ article.get_status_display }}</td>
-    <td><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></td>
+    <td><a href="">{{ article.title }}</a></td>
     <td>{{ article.owner }}</td>
     <td>{{ article.last_update_timestamp | date:"Y-M-D H:i:s" }}</td>
     </tr>
     {% endfor%}
-  </table>
-  <br />
-  {% include "component/paginator.html" with param_name="page_no" %}
-<!--  <nav>
-      <ul class = "pagination">
-        {% if has_previous %}
-        <li>
-          <a href="?page_no=1" aria-label="Prevoius">
-            <span aria-hidden="true">第一页</span>
-          </a>
-        </li>
-        <li>
-          <a href="?page_no={{ previous_link }}" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        {% endif %}
-        {%for no in page_links %}
-        <li{% if current_no == no %} class="active"{% endif %}><a href="?page_no={{ no }}">{{ no }}</a></li>
-        {% endfor %}
-        {% if has_next %}
-        <li>
-	  <a href="?page_no={{ next_link }}" aria-label ="Next">
-	    <span aria-hidden="true">&raquo;</span>
-	  </a>
-	</li>
-	<li>
-         <a href="?page_no={{ page_cnt }}" aria-label="Next">
-            <span aira-hidden="true">最后一页</span>
-         </a>
-        </li>
-        {% endif %}
-      </ul>
-  </nav>-->
-</div>
+  </table>-->
+
+
 {% endblock %}
