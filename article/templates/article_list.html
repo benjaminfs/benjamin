@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="row">
-  <div class="clo-md-12">
+  <div class="col-md-6">
     <h2>攻略精选</h2>
+  </div>
+  <div class="col-md-6">
+      <a href="article_create"><h2>发表文章</h2></a>
   </div>
 </div>
 {% for article in articles%}
@@ -12,25 +15,8 @@
       <td>{{article.abstract}}</td>
     </table>
   </div>
-
-
 {% endfor %}
-  <!--<table class="table table-bordered">
-    <tr>
-      <th>状态</th>
-      <th>标题</th>
-      <th>作者</th>
-      <th>更新时间</th>
-    </tr>
-    {% for article in articles %}
-    <tr>
-    <td>{{ article.get_status_display }}</td>
-    <td><a href="">{{ article.title }}</a></td>
-    <td>{{ article.owner }}</td>
-    <td>{{ article.last_update_timestamp | date:"Y-M-D H:i:s" }}</td>
-    </tr>
-    {% endfor%}
-  </table>-->
+
 
 
 {% endblock %}
