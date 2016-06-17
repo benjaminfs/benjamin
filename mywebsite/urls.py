@@ -15,10 +15,11 @@ Including another URLconf
 from django.conf.urls import include, url
 from django.contrib import admin
 
+
 admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^article/', include("article.urls")),
-    url(r'^$', 'article.views.article_list', name='article_list'),
+    url(r'^$', "article.views.article_index", name="article_index"),
+    url(r'^article_create/', "article.views.article_create", name="article_create"),
 ]
